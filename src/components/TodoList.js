@@ -4,13 +4,14 @@ import Todo from './Todo'
 class TodoList extends Component {
   render(){
     let todoArray = this.props.todos.map( (todo) => {
-      return(
+      return (
         <Todo
           key={todo._id}
-          todo={todo}/>
+          todo={todo}
+          onDeleteTodo={this.props.onDeleteTodo} />
       )
     })
-    return(
+    return (
       <div className="todos">
         {todoArray}
       </div>
