@@ -46,6 +46,10 @@ class TodosContainer extends Component {
     })
   }
 
+  updateTodo(todo) {
+    console.log('updating todo', todo);
+  }
+
   render(){
     return (
       <div className='todosContainer'>
