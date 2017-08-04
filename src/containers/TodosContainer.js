@@ -53,6 +53,7 @@ class TodosContainer extends Component {
         return todoResult._id === id;
       })
       targetTodo.body = res.body
+      this.forceUpdate()
     })
   }
 
