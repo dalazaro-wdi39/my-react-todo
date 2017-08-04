@@ -46,16 +46,24 @@ class TodosContainer extends Component {
     })
   }
 
-  updateTodo(todo) {
-    console.log('updating todo', todo);
+  updateTodo(newTodo, id) {
+    console.log('updating todo', newTodo);
+    TodoModel.update(newTodo, id).then( (res) => {
+      let targetTodo = this.state.todos.find( (todoResult) => {
+        return todoResult._id === id;
+      })
+      targetTodo.body = res.body
+    })
   }
 
   render(){
     return (
       <div className='todosContainer'>
-        <CreateTodoForm createTodo={this.createTodo.bind(this)} />
+        <CreateTodoForm
+          createTodo={this.createTodo.bind(this)} />
         <TodoList
           todos={this.state.todos}
+          onUpdateTodo={this.updateTodo.bind(this)}
           onDeleteTodo={this.deleteTodo.bind(this)} />
       </div>
     )
